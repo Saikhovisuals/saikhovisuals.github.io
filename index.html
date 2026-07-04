@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saikho Visuals — Diseño & Video sin Filtros</title>
+    
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0d0d0d;
+            --red: #d80d2c;
+            --gray: #d5d5d8;
+            --dark-gray: #3a3a3d;
+            --light-gray: #f0f0f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--black);
+            color: var(--gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        /* HEADER & NAV */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-gray);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+
+        .scroll-indicator p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .scroll-arrow {
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(216, 13, 44, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-label {
+            font-size: 0.9rem;
+            color: var(--red);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+            word-spacing: 100vw;
+        }
+
+        .hero h1 .break {
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .cta-button:hover {
+            background: #b50a23;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(216, 13, 44, 0.3);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section.dark {
+            background: #1a1a1a;
+        }
+
+        section.light {
+            background: var(--black);
+        }
+
+        section h2 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        section > p:first-of-type {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        /* PROBLEM SECTION */
+        .problem-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .problem-text {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .problem-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .problem-highlight {
+            background: rgba(216, 13, 44, 0.1);
+            padding: 2rem;
+            border-left: 4px solid var(--red);
+            margin: 2rem 0;
+        }
+
+        .problem-highlight p {
+            color: white;
+            font-weight: 500;
+        }
+
+        /* STATS SECTION */
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            border-bottom: 2px solid var(--dark-gray);
+            padding-bottom: 2rem;
+        }
+
+        .stat-number {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 3rem;
+            color: var(--red);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* POSITIONING SECTION */
+        .positioning-text {
+            max-width: 800px;
+        }
+
+        .positioning-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .positioning-highlight {
+            color: white;
+            font-weight: 500;
+            background: rgba(216, 13, 44, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid var(--red);
+            margin: 2rem 0;
+        }
+
+        /* PORTFOLIO SECTION */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #2a2a2d 100%);
+            border: 1px solid var(--dark-gray);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(216, 13, 44, 0.15);
+        }
+
+        .portfolio-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* FINAL CTA SECTION */
+        .final-cta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .final-cta-text h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta-text p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-buttons a:hover {
+            background: #b50a23;
+            transform: translateY(-2px);
+        }
+
+        .cta-buttons a.secondary {
+            background: transparent;
+            border: 2px solid var(--gray);
+            color: var(--gray);
+        }
+
+        .cta-buttons a.secondary:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            border-top: 1px solid var(--dark-gray);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .lang-switcher {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .lang-switcher a {
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            .problem-content,
+            .final-cta {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        section {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">Saikho <span>Visuals</span></div>
+            <ul class="nav-links">
+                <li><a href="#problema">El Problema</a></li>
+                <li><a href="#posicionamiento">Posicionamiento</a></li>
+                <li><a href="#portfolio">Trabajos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SCROLL INDICATOR -->
+    <div class="scroll-indicator">
+        <p>Scroll</p>
+        <div class="scroll-arrow">↓</div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Diseño & Video Production</p>
+            <h1>
+                Deja de perder<br>
+                <span class="break">tiempo en edición</span>
+            </h1>
+            <p>Delega la parte aburrida y enfócate en lo que genera dinero: <strong>crear contenido</strong> que realmente conecta.</p>
+            <a href="https://wa.me/tu-numero-aqui" class="cta-button">Quiero Delegar Mi Contenido</a>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section id="problema" class="dark">
+        <h2>"Rápido, lo hago en poco tiempo..."</h2>
+        <p>Exacto. Eso pensaste antes de transferir el video a tu teléfono.</p>
+
+        <div class="problem-content">
+            <div class="problem-text">
+                <p>Pasa una hora. <strong>Y sigues atrapado en la misma pantalla.</strong></p>
+                <p>La app se congela. La batería se muere. La espalda grita.</p>
+                <p>Y la ansiedad golpea porque mañana el video sigue sin estar listo.</p>
+                <p>Mientras tanto, tu competencia ya publicó 3 videos más hoy.</p>
+            </div>
+            <div class="problem-highlight">
+                <p>🎬 Con esa 1 hora peleando con la edición, podrías haber grabado 5 Reels nuevos.</p>
+                <p>Eso es casi una semana de contenido garantizado.</p>
+                <p>Pero elegiste enfocarte en la parte aburrida del proceso.</p>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">1h</div>
+                <div class="stat-label">Perdidas editando un solo video corto</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5x</div>
+                <div class="stat-label">Más videos si simplemente estuvieras grabando</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSITIONING SECTION -->
+    <section id="posicionamiento" class="light">
+        <h2>El Posicionamiento</h2>
+        <p>Edición diseñada para retener. No solo para impresionar.</p>
+
+        <div class="positioning-text">
+            <p>
+                No necesitas edición histérica. Nadie aguanta videos llenos de memes, contaminación visual y transiciones sin sentido.
+            </p>
+            <p>
+                Necesitas <strong>claridad, retención y autoridad.</strong>
+            </p>
+
+            <div class="positioning-highlight">
+                Mi trabajo es blindar tu imagen. Un video que llega limpio, a tiempo, listo para sostener la atención de quienes realmente importan. Sin ruido. Sin filtro. Puro contenido que convierte.
+            </div>
+
+            <p>
+                Trabajo con marcas que saben que <strong>la edición invisible es la mejor edición.</strong> Donde cada corte tiene propósito. Donde el ritmo respeta el mensaje, no lo abruma.
+            </p>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="dark">
+        <h2>En Práctica</h2>
+        <p>Mis trabajos recientes.</p>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">🎬 Skyline Systems</div>
+            <div class="portfolio-item">🧵 Finatex Campaign</div>
+            <div class="portfolio-item">⚽ Ivanacurio FC</div>
+            <div class="portfolio-item">🏥 Primeros Latidos</div>
+            <div class="portfolio-item">🍣 Sushi Brand</div>
+            <div class="portfolio-item">🎨 Thalamus</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://wa.me/tu-numero-aqui" class="cta-button">Quiero Este Nivel en Mi Perfil</a>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="light">
+        <div class="final-cta">
+            <div class="final-cta-text">
+                <h2>Delegar no es gastar dinero.</h2>
+                <p>Es comprarte tiempo de vuelta.</p>
+                <p style="color: var(--gray); line-height: 1.8;">
+                    Mientras tú estés editando videos, tu competencia estará grabando 5 más. La edición es el cuello de botella de tu crecimiento. Yo elimino ese cuello de botella.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/tu-numero-aqui">Quiero Multiplicar Mi Tiempo</a>
+                    <a href="https://instagram.com" class="secondary">Ver Behind the Scenes</a>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, var(--red) 0%, #b50a23 100%); padding: 3rem; display: flex; align-items: center; justify-content: center; min-height: 300px; color: white; font-size: 3rem;">
+                📸
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+                <a href="https://wa.me/tu-numero-aqui" target="_blank">WhatsApp</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="mailto:hello@saikhovisuals.com">Email</a>
+            </div>
+            <p class="footer-text">&copy; 2026 Saikho Visuals — Todos los derechos reservados.</p>
+            <div class="lang-switcher">
+                Ver en <a href="index-en.html">English</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll indicator fade out
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            } else {
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.pointerEvents = 'auto';
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
