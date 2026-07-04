@@ -85,7 +85,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 2rem;
+            position: relative;
         }
 
         .logo {
@@ -100,10 +101,28 @@
             color: var(--red);
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 0.3rem;
+            background: transparent;
+            border: 0;
+            padding: 0.3rem;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2.5rem;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -188,7 +207,9 @@
         .hero h1 {
             color: white;
             margin-bottom: 1.5rem;
-            word-spacing: 100vw;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero h1 .break {
@@ -196,11 +217,14 @@
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 2.2vw, 1.25rem);
             color: var(--gray);
             margin-bottom: 2.5rem;
             font-weight: 300;
             letter-spacing: 0.3px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
@@ -464,35 +488,59 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .scroll-indicator {
-                display: none;
-            }
-
+        @media (max-width: 1024px) {
             .problem-content,
             .final-cta {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
             .stats-container {
                 grid-template-columns: 1fr;
             }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.75rem);
+                right: 1.25rem;
+                left: 1.25rem;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(13, 13, 13, 0.98);
+                border: 1px solid var(--dark-gray);
+                padding: 1rem 1.25rem;
+                border-radius: 0.75rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
 
             section {
-                padding: 3rem 1.5rem;
+                padding: 4rem 1.25rem;
             }
 
             .hero {
                 margin-top: 70px;
+                padding: 2rem 1rem 3.5rem;
+            }
+
+            .hero-content {
+                padding: 0 0.25rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .cta-buttons {
@@ -502,6 +550,38 @@
             .cta-buttons a {
                 width: 100%;
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.1rem, 9vw, 2.8rem);
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item {
+                min-height: 220px;
+            }
+
+            .cta-button,
+            .cta-buttons a {
+                padding: 0.95rem 1.25rem;
+                font-size: 0.95rem;
             }
         }
 
@@ -531,6 +611,11 @@
     <header>
         <nav>
             <div class="logo">Saikho <span>Visuals</span></div>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#problema">El Problema</a></li>
                 <li><a href="#posicionamiento">Posicionamiento</a></li>
@@ -670,15 +755,37 @@
     <script>
         // Scroll indicator fade out
         const scrollIndicator = document.querySelector('.scroll-indicator');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                scrollIndicator.style.opacity = '0';
-                scrollIndicator.style.pointerEvents = 'none';
-            } else {
-                scrollIndicator.style.opacity = '1';
-                scrollIndicator.style.pointerEvents = 'auto';
-            }
-        });
+        if (scrollIndicator) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.pointerEvents = 'none';
+                } else {
+                    scrollIndicator.style.opacity = '1';
+                    scrollIndicator.style.pointerEvents = 'auto';
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active', isOpen);
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
 
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
