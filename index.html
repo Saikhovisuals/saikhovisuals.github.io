@@ -92,14 +92,17 @@
         }
 
         .logo {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 42px;
         }
 
-        .logo span {
-            color: var(--red);
+        .logo img {
+            display: block;
+            height: 42px;
+            width: auto;
+            object-fit: contain;
         }
 
         .menu-toggle {
@@ -556,7 +559,9 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Saikho <span>Visuals</span></div>
+            <a href="#" class="logo" aria-label="Saikho Visuals">
+                <img src="assets/img/Recurso%2010.png" alt="Saikho Visuals logo">
+            </a>
             <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
