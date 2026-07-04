@@ -6,7 +6,7 @@
     <title>Saikho Visuals — Diseño & Video sin Filtros</title>
     
     <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -21,6 +21,7 @@
             --gray: #d5d5d8;
             --dark-gray: #3a3a3d;
             --light-gray: #f0f0f0;
+            --panel: #161616;
         }
 
         html {
@@ -29,14 +30,13 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Clash Display', sans-serif;
             background: var(--black);
             color: var(--gray);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* TYPOGRAPHY */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Clash Display', sans-serif;
             font-weight: 700;
@@ -44,30 +44,33 @@
         }
 
         h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            line-height: 1.1;
+            font-size: clamp(2.6rem, 7vw, 5.2rem);
+            line-height: 0.95;
         }
 
         h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            line-height: 1.2;
+            font-size: clamp(2rem, 4.3vw, 3.25rem);
+            line-height: 1.05;
         }
 
         h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(1.25rem, 2.2vw, 1.7rem);
         }
 
         p {
             font-size: 1rem;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
         strong {
-            font-weight: 600;
             color: var(--red);
+            font-weight: 600;
         }
 
-        /* HEADER & NAV */
+        a {
+            color: inherit;
+        }
+
         header {
             position: fixed;
             top: 0;
@@ -76,24 +79,22 @@
             z-index: 1000;
             background: rgba(13, 13, 13, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--dark-gray);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         nav {
-            max-width: 1400px;
+            max-width: 1320px;
             margin: 0 auto;
+            padding: 1.15rem 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1.25rem 2rem;
-            position: relative;
+            justify-content: space-between;
         }
 
         .logo {
             font-family: 'Clash Display', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
             color: white;
         }
 
@@ -103,367 +104,354 @@
 
         .menu-toggle {
             display: none;
-            flex-direction: column;
-            gap: 0.3rem;
             background: transparent;
             border: 0;
-            padding: 0.3rem;
+            padding: 0.2rem;
             cursor: pointer;
+            flex-direction: column;
+            gap: 0.28rem;
         }
 
         .menu-toggle span {
+            display: block;
             width: 24px;
             height: 2px;
             background: white;
-            transition: all 0.3s ease;
         }
 
         .nav-links {
             display: flex;
+            gap: 2rem;
             list-style: none;
-            gap: 2.5rem;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--gray);
-            font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: color 0.25s ease;
         }
 
         .nav-links a:hover {
             color: var(--red);
         }
 
-        /* SCROLL INDICATOR */
-        .scroll-indicator {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            animation: bounce 2s infinite;
-            z-index: 10;
-        }
-
-        .scroll-indicator p {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-        }
-
-        .scroll-arrow {
-            font-size: 1.5rem;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* HERO SECTION */
         .hero {
-            margin-top: 80px;
             min-height: 100vh;
+            padding: 7rem 1.5rem 4rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
             position: relative;
             overflow: hidden;
+            background:
+                radial-gradient(circle at top right, rgba(216,13,44,0.15), transparent 36%),
+                linear-gradient(135deg, var(--black) 0%, #151515 100%);
         }
 
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(216, 13, 44, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(40px);
+            inset: auto auto -10% -8%;
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, rgba(216,13,44,0.16), transparent 70%);
+            filter: blur(10px);
+            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 900px;
-            text-align: center;
+            max-width: 980px;
+            text-align: left;
         }
 
-        .hero-label {
-            font-size: 0.9rem;
+        .hero-badge {
+            display: inline-block;
+            margin-bottom: 1.2rem;
             color: var(--red);
+            font-size: 0.82rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
         }
 
         .hero h1 {
             color: white;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             max-width: 760px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero h1 .break {
             display: block;
         }
 
-        .hero p {
-            font-size: clamp(1rem, 2.2vw, 1.25rem);
-            color: var(--gray);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            max-width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--red);
-            color: white;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            font-family: 'Clash Display', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border-radius: 0;
-        }
-
-        .cta-button:hover {
-            background: #b50a23;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(216, 13, 44, 0.3);
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        section.dark {
-            background: #1a1a1a;
-        }
-
-        section.light {
-            background: var(--black);
-        }
-
-        section h2 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        section > p:first-of-type {
-            font-size: 1.15rem;
-            color: var(--gray);
-            margin-bottom: 3rem;
-            max-width: 800px;
-        }
-
-        /* PROBLEM SECTION */
-        .problem-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .problem-text {
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        .problem-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .problem-highlight {
-            background: rgba(216, 13, 44, 0.1);
-            padding: 2rem;
-            border-left: 4px solid var(--red);
-            margin: 2rem 0;
-        }
-
-        .problem-highlight p {
-            color: white;
-            font-weight: 500;
-        }
-
-        /* STATS SECTION */
-        .stats-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            border-bottom: 2px solid var(--dark-gray);
-            padding-bottom: 2rem;
-        }
-
-        .stat-number {
-            font-family: 'Clash Display', sans-serif;
-            font-size: 3rem;
-            color: var(--red);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        /* POSITIONING SECTION */
-        .positioning-text {
-            max-width: 800px;
-        }
-
-        .positioning-text p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .positioning-highlight {
-            color: white;
-            font-weight: 500;
-            background: rgba(216, 13, 44, 0.1);
-            padding: 1.5rem;
-            border-left: 4px solid var(--red);
-            margin: 2rem 0;
-        }
-
-        /* PORTFOLIO SECTION */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-item {
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, var(--dark-gray) 0%, #2a2a2d 100%);
-            border: 1px solid var(--dark-gray);
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            position: relative;
-        }
-
-        .portfolio-item:hover {
-            border-color: var(--red);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(216, 13, 44, 0.15);
-        }
-
-        .portfolio-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* FINAL CTA SECTION */
-        .final-cta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .final-cta-text h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .final-cta-text p {
+        .hero-copy {
+            font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+            max-width: 700px;
             color: var(--gray);
             margin-bottom: 2rem;
-            line-height: 1.8;
         }
 
-        .cta-buttons {
+        .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .cta-buttons a {
-            display: inline-block;
-            padding: 1rem 2rem;
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1.6rem;
             background: var(--red);
             color: white;
             text-decoration: none;
             font-family: 'Clash Display', sans-serif;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid transparent;
         }
 
-        .cta-buttons a:hover {
+        .button:hover {
             background: #b50a23;
             transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(216,13,44,0.22);
         }
 
-        .cta-buttons a.secondary {
+        .button.secondary {
             background: transparent;
-            border: 2px solid var(--gray);
+            border-color: rgba(255,255,255,0.12);
             color: var(--gray);
         }
 
-        .cta-buttons a.secondary:hover {
+        .button.secondary:hover {
             border-color: var(--red);
             color: var(--red);
         }
 
-        /* FOOTER */
-        footer {
-            background: var(--black);
-            border-top: 1px solid var(--dark-gray);
-            padding: 3rem 2rem;
+        .scroll-indicator {
+            position: fixed;
+            bottom: 1.4rem;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
+            z-index: 10;
+            animation: float 2s ease-in-out infinite;
         }
 
-        .footer-content {
-            max-width: 1400px;
+        .scroll-indicator p {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+        }
+
+        .scroll-arrow {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .section {
+            max-width: 1320px;
             margin: 0 auto;
+            padding: 5.5rem 1.5rem;
+        }
+
+        .section-dark {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        }
+
+        .section-light {
+            background: transparent;
+        }
+
+        .eyebrow {
+            color: var(--red);
+            font-size: 0.82rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .section h2 {
+            color: white;
+            margin-bottom: 1rem;
+            max-width: 760px;
+        }
+
+        .section-intro {
+            color: var(--gray);
+            max-width: 740px;
+            margin-bottom: 2.3rem;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .copy-card,
+        .highlight-card,
+        .panel,
+        .project-card,
+        .final-card {
+            border: 1px solid rgba(255,255,255,0.08);
+            background: var(--panel);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+        }
+
+        .copy-card {
+            padding: 2rem;
+        }
+
+        .copy-card p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .highlight-card {
+            padding: 2rem;
+            border-left: 4px solid var(--red);
+        }
+
+        .highlight-card p {
+            color: white;
+            margin-bottom: 0.8rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2.2rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            padding: 1.4rem;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat-number {
+            display: block;
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            color: var(--red);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .positioning-shell {
+            display: grid;
+            gap: 1.25rem;
+            max-width: 900px;
+        }
+
+        .positioning-shell .panel {
+            padding: 1.8rem 2rem;
+        }
+
+        .positioning-shell p {
+            color: var(--gray);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(216,13,44,0.16), rgba(13,13,13,0.35));
+            border-left: 4px solid var(--red);
+            padding: 1.6rem 2rem;
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .project-card {
+            padding: 1.3rem;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--red);
+        }
+
+        .project-card .emoji {
+            font-size: 1.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card h3 {
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .center {
+            text-align: center;
+            margin-top: 2.3rem;
+        }
+
+        .final-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .final-card {
+            padding: 2rem;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(216,13,44,0.92), #9a0923);
+        }
+
+        .final-card .icon {
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: white;
+        }
+
+        footer {
+            padding: 3rem 1.5rem 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.3rem;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
-            color: var(--gray);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--gray);
         }
 
         .footer-links a:hover {
@@ -472,34 +460,45 @@
 
         .footer-text {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .lang-switcher {
+            margin-top: 0.8rem;
             color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 1rem;
         }
 
         .lang-switcher a {
             color: var(--red);
             text-decoration: none;
-            font-weight: 500;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .problem-content,
-            .final-cta {
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content, .section {
+            animation: fadeUp 0.8s ease-out both;
+        }
+
+        @media (max-width: 920px) {
+            .split-grid,
+            .final-grid {
                 grid-template-columns: 1fr;
             }
 
-            .stats-container {
-                grid-template-columns: 1fr;
+            .portfolio-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 760px) {
             .menu-toggle {
                 display: flex;
             }
@@ -507,15 +506,15 @@
             .nav-links {
                 display: none;
                 position: absolute;
-                top: calc(100% + 0.75rem);
-                right: 1.25rem;
-                left: 1.25rem;
+                top: calc(100% + 0.7rem);
+                right: 1rem;
+                left: 1rem;
                 flex-direction: column;
-                gap: 1rem;
+                align-items: flex-start;
                 background: rgba(13, 13, 13, 0.98);
-                border: 1px solid var(--dark-gray);
-                padding: 1rem 1.25rem;
-                border-radius: 0.75rem;
+                border: 1px solid rgba(255,255,255,0.08);
+                padding: 1rem 1.1rem;
+                border-radius: 0.8rem;
             }
 
             .nav-links.active {
@@ -526,88 +525,30 @@
                 display: none;
             }
 
-            section {
-                padding: 4rem 1.25rem;
-            }
-
             .hero {
-                margin-top: 70px;
-                padding: 2rem 1rem 3.5rem;
-            }
-
-            .hero-content {
-                padding: 0 0.25rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .cta-buttons a {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 560px) {
-            nav {
-                padding: 1rem 1rem;
-            }
-
-            .logo {
-                font-size: 1.25rem;
+                padding-top: 6.2rem;
             }
 
             .hero h1 {
-                font-size: clamp(2.1rem, 9vw, 2.8rem);
+                font-size: clamp(2.2rem, 9vw, 3rem);
             }
 
-            .hero p {
-                font-size: 1rem;
-            }
-
+            .stats-grid,
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
-            .portfolio-item {
-                min-height: 220px;
+            .button {
+                width: 100%;
             }
 
-            .cta-button,
-            .cta-buttons a {
-                padding: 0.95rem 1.25rem;
-                font-size: 0.95rem;
+            .section {
+                padding: 4rem 1.15rem;
             }
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-content {
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        section {
-            animation: fadeInUp 0.8s ease-out both;
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
         <nav>
             <div class="logo">Saikho <span>Visuals</span></div>
@@ -617,147 +558,172 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="#problema">El Problema</a></li>
+                <li><a href="#problema">El problema</a></li>
                 <li><a href="#posicionamiento">Posicionamiento</a></li>
                 <li><a href="#portfolio">Trabajos</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- SCROLL INDICATOR -->
     <div class="scroll-indicator">
         <p>Scroll</p>
         <div class="scroll-arrow">↓</div>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-label">Diseño & Video Production</p>
-            <h1>
-                Deja de perder<br>
-                <span class="break">tiempo en edición</span>
-            </h1>
-            <p>Delega la parte aburrida y enfócate en lo que genera dinero: <strong>crear contenido</strong> que realmente conecta.</p>
-            <a href="https://wa.me/593984093526" class="cta-button">Quiero Delegar Mi Contenido</a>
-        </div>
-    </section>
-
-    <!-- PROBLEM SECTION -->
-    <section id="problema" class="dark">
-        <h2>"Rápido, lo hago en poco tiempo..."</h2>
-        <p>Exacto. Eso pensaste antes de transferir el video a tu teléfono.</p>
-
-        <div class="problem-content">
-            <div class="problem-text">
-                <p>Pasa una hora. <strong>Y sigues atrapado en la misma pantalla.</strong></p>
-                <p>La app se congela. La batería se muere. La espalda grita.</p>
-                <p>Y la ansiedad golpea porque mañana el video sigue sin estar listo.</p>
-                <p>Mientras tanto, tu competencia ya publicó 3 videos más hoy.</p>
-            </div>
-            <div class="problem-highlight">
-                <p>🎬 Con esa 1 hora peleando con la edición, podrías haber grabado 5 Reels nuevos.</p>
-                <p>Eso es casi una semana de contenido garantizado.</p>
-                <p>Pero elegiste enfocarte en la parte aburrida del proceso.</p>
-            </div>
-        </div>
-
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">1h</div>
-                <div class="stat-label">Perdidas editando un solo video corto</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">5x</div>
-                <div class="stat-label">Más videos si simplemente estuvieras grabando</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- POSITIONING SECTION -->
-    <section id="posicionamiento" class="light">
-        <h2>El Posicionamiento</h2>
-        <p>Edición diseñada para retener. No solo para impresionar.</p>
-
-        <div class="positioning-text">
-            <p>
-                No necesitas edición histérica. Nadie aguanta videos llenos de memes, contaminación visual y transiciones sin sentido.
-            </p>
-            <p>
-                Necesitas <strong>claridad, retención y autoridad.</strong>
-            </p>
-
-            <div class="positioning-highlight">
-                Mi trabajo es blindar tu imagen. Un video que llega limpio, a tiempo, listo para sostener la atención de quienes realmente importan. Sin ruido. Sin filtro. Puro contenido que convierte.
-            </div>
-
-            <p>
-                Trabajo con marcas que saben que <strong>la edición invisible es la mejor edición.</strong> Donde cada corte tiene propósito. Donde el ritmo respeta el mensaje, no lo abruma.
-            </p>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO SECTION -->
-    <section id="portfolio" class="dark">
-        <h2>En Práctica</h2>
-        <p>Mis trabajos recientes.</p>
-
-        <div class="portfolio-grid">
-            <div class="portfolio-item">🎬 Skyline Systems</div>
-            <div class="portfolio-item">🧵 Finatex Campaign</div>
-            <div class="portfolio-item">⚽ Ivanacurio FC</div>
-            <div class="portfolio-item">🏥 Primeros Latidos</div>
-            <div class="portfolio-item">🍣 Sushi Brand</div>
-            <div class="portfolio-item">🎨 Thalamus</div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="https://wa.me/+593984093526" class="cta-button">Quiero Este Nivel en Mi Perfil</a>
-        </div>
-    </section>
-
-    <!-- FINAL CTA SECTION -->
-    <section class="light">
-        <div class="final-cta">
-            <div class="final-cta-text">
-                <h2>Delegar no es gastar dinero.</h2>
-                <p>Es comprarte tiempo de vuelta.</p>
-                <p style="color: var(--gray); line-height: 1.8;">
-                    Mientras tú estés editando videos, tu competencia estará grabando 5 más. La edición es el cuello de botella de tu crecimiento. Yo elimino ese cuello de botella.
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-badge">Diseño &amp; Video Production</p>
+                <h1>
+                    Deja de perder
+                    <span class="break">tiempo en edición</span>
+                </h1>
+                <p class="hero-copy">
+                    Delega la parte aburrida y enfócate en lo que genera dinero: <strong>crear contenido</strong> que realmente conecta.
                 </p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/593984093526">Quiero Multiplicar Mi Tiempo</a>
-                    <a href="https://instagram.com" class="secondary">Ver Behind the Scenes</a>
+                <div class="hero-actions">
+                    <a href="https://wa.me/593984093526" class="button">Quiero delegar mi contenido</a>
+                    <a href="#portfolio" class="button secondary">Ver mis trabajos</a>
                 </div>
             </div>
-            <div style="background: linear-gradient(135deg, var(--red) 0%, #b50a23 100%); padding: 3rem; display: flex; align-items: center; justify-content: center; min-height: 300px; color: white; font-size: 3rem;">
-                📸
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
+        <section id="problema" class="section section-dark">
+            <p class="eyebrow">El problema</p>
+            <h2>“Rápido, lo hago en poco tiempo...”</h2>
+            <p class="section-intro">Exacto. Eso pensaste antes de transferir el video a tu teléfono y terminar atrapado en la misma pantalla.</p>
+
+            <div class="split-grid">
+                <div class="copy-card">
+                    <p>Pasa una hora. <strong>Y sigues atrapado en la misma pantalla.</strong></p>
+                    <p>La app se congela. La batería se muere. La espalda grita.</p>
+                    <p>Y la ansiedad golpea porque mañana el video sigue sin estar listo.</p>
+                    <p>Mientras tanto, tu competencia ya publicó tres videos más hoy.</p>
+                </div>
+                <div class="highlight-card">
+                    <p>🎬 Con esa 1 hora peleando con la edición, podrías haber grabado 5 Reels nuevos.</p>
+                    <p>Eso es casi una semana de contenido garantizado.</p>
+                    <p>Pero elegiste enfocarte en la parte aburrida del proceso.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">1h</span>
+                    <p>Perdidas editando un solo video corto.</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5x</span>
+                    <p>Más videos si simplemente estuvieras grabando.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="posicionamiento" class="section section-light">
+            <p class="eyebrow">Posicionamiento</p>
+            <h2>Edición diseñada para retener. No solo para impresionar.</h2>
+            <div class="positioning-shell">
+                <div class="panel">
+                    <p>No necesitas edición histérica. Nadie aguanta videos llenos de memes, contaminación visual y transiciones sin sentido.</p>
+                </div>
+                <div class="quote-box">
+                    Mi trabajo es blindar tu imagen. Un video que llega limpio, a tiempo, listo para sostener la atención de quienes realmente importan. Sin ruido. Sin filtro. Puro contenido que convierte.
+                </div>
+                <div class="panel">
+                    <p>Necesitas <strong>claridad, retención y autoridad.</strong> Trabajo con marcas que saben que la edición invisible es la mejor edición.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section section-dark">
+            <p class="eyebrow">Trabajos</p>
+            <h2>En práctica</h2>
+            <p class="section-intro">Mis trabajos recientes, con una identidad visual limpia, estratégica y orientada a la conversión.</p>
+
+            <div class="portfolio-grid">
+                <article class="project-card">
+                    <div>
+                        <div class="emoji">🎬</div>
+                        <h3>Skyline Systems</h3>
+                        <p>Brand film con ritmo ágil y mensaje claro.</p>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div>
+                        <div class="emoji">🧵</div>
+                        <h3>Finatex Campaign</h3>
+                        <p>Contenido de marca pensado para generar autoridad.</p>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div>
+                        <div class="emoji">⚽</div>
+                        <h3>Ivanacurio FC</h3>
+                        <p>Edición dinámica para social media y difusión.</p>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div>
+                        <div class="emoji">🏥</div>
+                        <h3>Primeros Latidos</h3>
+                        <p>Storytelling emocional con enfoque humano.</p>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div>
+                        <div class="emoji">🍣</div>
+                        <h3>Sushi Brand</h3>
+                        <p>Contenido visual elegante y premium.</p>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div>
+                        <div class="emoji">🎨</div>
+                        <h3>Thalamus</h3>
+                        <p>Edición con identidad sólida para redes.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="center">
+                <a href="https://wa.me/593984093526" class="button">Quiero este nivel en mi perfil</a>
+            </div>
+        </section>
+
+        <section class="section section-light">
+            <div class="final-grid">
+                <div>
+                    <p class="eyebrow">Delegar</p>
+                    <h2>Delegar no es gastar dinero. Es comprarte tiempo de vuelta.</h2>
+                    <p class="section-intro">Mientras tú estás editando videos, tu competencia estará grabando 5 más. La edición es el cuello de botella de tu crecimiento. Yo elimino ese cuello de botella.</p>
+                    <div class="hero-actions">
+                        <a href="https://wa.me/593984093526" class="button">Quiero multiplicar mi tiempo</a>
+                        <a href="https://instagram.com" class="button secondary">Ver behind the scenes</a>
+                    </div>
+                </div>
+                <div class="final-card">
+                    <div class="icon">📸</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://instagram.com" target="_blank">Instagram</a>
-                <a href="https://wa.me/593984093526" target="_blank">WhatsApp</a>
-                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                <a href="mailto:hello@saikhovisuals.com">Email</a>
-            </div>
-            <p class="footer-text">&copy; 2026 Saikho Visuals — Todos los derechos reservados.</p>
-            <div class="lang-switcher">
-                Ver en <a href="index-en.html">English</a>
-            </div>
+        <div class="footer-links">
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="https://wa.me/593984093526" target="_blank">WhatsApp</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="mailto:hello@saikhovisuals.com">Email</a>
         </div>
+        <p class="footer-text">© 2026 Saikho Visuals — Todos los derechos reservados.</p>
+        <div class="lang-switcher">Ver en <a href="index-en.html">English</a></div>
     </footer>
 
     <script>
-        // Scroll indicator fade out
         const scrollIndicator = document.querySelector('.scroll-indicator');
         if (scrollIndicator) {
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
+                if (window.scrollY > 120) {
                     scrollIndicator.style.opacity = '0';
                     scrollIndicator.style.pointerEvents = 'none';
                 } else {
@@ -767,27 +733,23 @@
             });
         }
 
-        // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', () => {
                 const isOpen = navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('active', isOpen);
                 menuToggle.setAttribute('aria-expanded', String(isOpen));
             });
 
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
-                    menuToggle.classList.remove('active');
                     menuToggle.setAttribute('aria-expanded', 'false');
                 });
             });
         }
 
-        // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
