@@ -6,7 +6,6 @@
     <title>Saikho Visuals — Diseño & Video sin Filtros</title>
     
     <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     
     <style>
@@ -31,7 +30,7 @@
         }
 
         body {
-            font-family: 'Space Mono', monospace;
+            font-family: Helvetica, Arial, sans-serif;
             background: var(--black);
             color: var(--gray);
             line-height: 1.75;
@@ -41,10 +40,9 @@
         h1, h2, h3, h4, h5, h6,
         .button,
         .button.secondary,
-        .video-label,
         .nav a,
         .eyebrow {
-            font-family: 'Space Mono', monospace;
+            font-family: Helvetica, Arial, sans-serif;
         }
 
         h1 {
@@ -464,39 +462,35 @@
         .project-card.video-card .video-mask {
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.7);
-            transition: background 0.3s ease;
+            background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.12), transparent 28%),
+                        radial-gradient(circle at 20% 70%, rgba(255,255,255,0.08), transparent 20%),
+                        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.06), transparent 18%),
+                        rgba(0,0,0,0.82);
+            transition: background 0.35s ease, opacity 0.35s ease;
             pointer-events: none;
         }
 
         .project-card.video-card .video-label {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.92);
-            font-size: 1rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            pointer-events: none;
-            text-align: center;
-            padding: 1rem;
+            display: none;
         }
 
         .project-card.video-card:hover .video-mask,
         .project-card.video-card.active .video-mask {
-            background: rgba(0,0,0,0.32);
+            background: rgba(0,0,0,0.18);
+        }
+
+        .project-card.video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.35s ease;
         }
 
         .project-card.video-card:hover video,
         .project-card.video-card.active video {
             opacity: 1;
-        }
-
-        .project-card.video-card:hover .video-label,
-        .project-card.video-card.active .video-label {
-            opacity: 0;
         }
 
         .center {
@@ -735,32 +729,26 @@
             <div class="portfolio-grid">
                 <article class="project-card video-card">
                     <div class="video-mask"></div>
-                    <div class="video-label">Haz clic o pasa el cursor para ver</div>
                     <video src="assets/videos/SAAS%203.mp4" loop playsinline controls></video>
                 </article>
                 <article class="project-card video-card">
                     <div class="video-mask"></div>
-                    <div class="video-label">Haz clic o pasa el cursor para ver</div>
                     <video src="assets/videos/AD%20SAAS%20VID%205%20V2.mp4" loop playsinline controls></video>
                 </article>
                 <article class="project-card video-card">
                     <div class="video-mask"></div>
-                    <div class="video-label">Haz clic o pasa el cursor para ver</div>
                     <video src="assets/videos/PQ%20NO%20SOMOS%20FAMOSOS%20LATITUD.mp4" loop playsinline controls></video>
                 </article>
                 <article class="project-card video-card">
                     <div class="video-mask"></div>
-                    <div class="video-label">Haz clic o pasa el cursor para ver</div>
                     <video src="assets/videos/PROMO%20MARTES%20PANKKO.mp4" loop playsinline controls></video>
                 </article>
                 <article class="project-card video-card">
                     <div class="video-mask"></div>
-                    <div class="video-label">Haz clic o pasa el cursor para ver</div>
                     <video src="assets/videos/SEGURIDAD%20HEAD%20SQUARE.mp4" loop playsinline controls></video>
                 </article>
                 <article class="project-card video-card">
                     <div class="video-mask"></div>
-                    <div class="video-label">Haz clic o pasa el cursor para ver</div>
                     <video src="assets/videos/ticket-club.mp4" loop playsinline controls></video>
                 </article>
             </div>
