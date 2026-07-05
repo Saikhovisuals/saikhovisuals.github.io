@@ -630,6 +630,165 @@
                 padding: 4rem 1.15rem;
             }
         }
+
+    /* BENEFIT CARD */
+    .stat-card.benefit-card {
+        background: rgba(216,13,44,0.08);
+    }
+
+    .stat-icon {
+        display: block;
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .stat-card h3 {
+        color: white;
+        margin-bottom: 0.8rem;
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    }
+
+    /* AUDIENCE GRID */
+    .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2.2rem;
+    }
+
+    .audience-card {
+        border: 1px solid rgba(255,255,255,0.08);
+        background: var(--panel);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+        border-radius: 1.25rem;
+        padding: 2rem;
+        border-left: 4px solid var(--red);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .audience-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 48px rgba(0,0,0,0.28);
+    }
+
+    .audience-card h3 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .audience-card p {
+        color: var(--gray);
+        margin-bottom: 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .audience-list {
+        list-style: none;
+    }
+
+    .audience-list li {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+        padding-left: 1.2rem;
+        position: relative;
+    }
+
+    .audience-list li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--red);
+        font-weight: 700;
+    }
+
+    /* DESIGN GRID */
+    .design-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.4rem;
+        margin-top: 2.2rem;
+    }
+
+    .design-item {
+        border: 1px solid rgba(255,255,255,0.08);
+        background: var(--panel);
+        border-radius: 1.25rem;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .design-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 48px rgba(0,0,0,0.28);
+    }
+
+    .design-placeholder {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, rgba(216,13,44,0.16), rgba(13,13,13,0.35));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+        font-weight: 600;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .design-item p {
+        padding: 1.2rem;
+        color: var(--gray);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    /* PROCESS GRID */
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2.2rem;
+        position: relative;
+    }
+
+    .process-step {
+        border: 1px solid rgba(255,255,255,0.08);
+        background: var(--panel);
+        border-radius: 1.25rem;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.25s ease;
+    }
+
+    .process-step:hover {
+        transform: translateY(-4px);
+    }
+
+    .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, var(--red), #b50a23);
+        border-radius: 50%;
+        color: white;
+        font-weight: 700;
+        font-size: 1.6rem;
+        margin: 0 auto 1rem;
+    }
+
+    .process-step h3 {
+        color: white;
+        margin-bottom: 0.8rem;
+    }
+
+    .process-step p {
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
     </style>
 </head>
 <body>
@@ -644,8 +803,8 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="#problema">El problema</a></li>
-                <li><a href="#posicionamiento">Posicionamiento</a></li>
+                <li><a href="#problema">El reto</a></li>
+                <li><a href="#audiencias">Para quién</a></li>
                 <li><a href="#portfolio">Trabajos</a></li>
             </ul>
         </nav>
@@ -661,65 +820,104 @@
             <div class="hero-content">
                 <p class="hero-badge">Diseño &amp; Video Production</p>
                 <h1>
-                    Deja de perder
-                    <span class="break">tiempo en edición</span>
+                    Tu contenido se merece más
+                    <span class="break">que un corte rápido</span>
                 </h1>
                 <p class="hero-copy">
-                    Delega la parte aburrida y enfócate en lo que genera dinero: <strong>crear contenido</strong> que realmente conecta.
+                    Edición y diseño para streamers, creadores y emprendimientos que quieren verse profesionales <strong>sin invertir 6 horas editando cada video.</strong>
                 </p>
                 <div class="hero-actions">
-                    <a href="https://wa.me/593984093526" class="button">💬 Quiero delegar mi contenido</a>
+                    <a href="https://wa.me/593984093526" class="button">💬 Quiero hablar de mi proyecto</a>
                     <a href="#portfolio" class="button secondary">Ver mis trabajos</a>
                 </div>
             </div>
         </section>
 
         <section id="problema" class="section section-dark">
-            <p class="eyebrow">El problema</p>
-            <h2>“Rápido, lo hago en poco tiempo...”</h2>
-            <p class="section-intro">Exacto. Eso pensaste antes de transferir el video a tu teléfono y terminar atrapado en la misma pantalla.</p>
+            <p class="eyebrow">El reto real</p>
+            <h2>El Reto Real de los <span style="color: var(--red);">Creadores</span></h2>
+            <p class="section-intro">No es solo edición. Es sobre reclamar tu tiempo y construir tu marca.</p>
 
-            <div class="split-grid">
-                <div class="copy-card">
-                    <p>Pasa una hora. <strong>Y sigues atrapado en la misma pantalla.</strong></p>
-                    <p>La app se congela. La batería se muere. La espalda grita.</p>
-                    <p>Y la ansiedad golpea porque mañana el video sigue sin estar listo.</p>
-                    <p>Mientras tanto, tu competencia ya publicó tres videos más hoy.</p>
-                </div>
-                <div class="highlight-card">
-                    <p>🎬 Con esa 1 hora peleando con la edición, podrías haber grabado 5 Reels nuevos.</p>
-                    <p>Eso es casi una semana de contenido garantizado.</p>
-                    <p>Pero elegiste enfocarte en la parte aburrida del proceso.</p>
-                </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">⏱</span>
+                <h3>Las horas se te evaporan</h3>
+                <p>Grabas contenido que te apasiona. Pero luego llega la edición: color, transiciones, audios, texto. De repente perdiste 5 horas en un video que debió durar 30 minutos.</p>
             </div>
+            <div class="stat-card">
+                <span class="stat-icon">📉</span>
+                <h3>La calidad define tu viralidad</h3>
+                <p>Un video bien editado retiene 3x más. Un logo inconsistente pierde credibilidad. Pero no tienes el presupuesto de una agencia ni el tiempo de hacerlo tú.</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔄</span>
+                <h3>Estás atrapado en tareas repetitivas</h3>
+                <p>Color grading, subtítulos, efectos, marcas de agua. Cada video es el mismo trabajo. Necesitas alguien que entienda tu visión, no un servicio genérico.</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">1h</span>
-                    <p>Perdidas editando un solo video corto.</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">5x</span>
-                    <p>Más videos si simplemente estuvieras grabando.</p>
-                </div>
-            </div>
-        </section>
+        <section id="beneficios" class="section section-light">
+            <p class="eyebrow">La Solución</p>
+            <h2>¿Qué pasa si <span style="color: var(--red);">delegas la post-producción?</span></h2>
+            <p class="section-intro">Recuperas tiempo, construyes consistencia visual, y tu contenido se ve profesional.</p>
 
-        <section id="posicionamiento" class="section section-light">
-            <p class="eyebrow">Posicionamiento</p>
-            <h2>Edición diseñada para retener. No solo para impresionar.</h2>
-            <div class="positioning-shell">
-                <div class="panel">
-                    <p>No necesitas edición histérica. Nadie aguanta videos llenos de memes, contaminación visual y transiciones sin sentido.</p>
-                </div>
-                <div class="quote-box">
-                    Mi trabajo es blindar tu imagen. Un video que llega limpio, a tiempo, listo para sostener la atención de quienes realmente importan. Sin ruido. Sin filtro. Puro contenido que convierte.
-                </div>
-                <div class="panel">
-                    <p>Necesitas <strong>claridad, retención y autoridad.</strong> Trabajo con marcas que saben que la edición invisible es la mejor edición.</p>
-                </div>
+        <div class="stats-grid">
+            <div class="stat-card benefit-card">
+                <span class="stat-icon">⚡</span>
+                <h3>Recuperas tu tiempo</h3>
+                <p>Mínimo 4-5 horas por video que puedes invertir en crear, crecer o descansar. Tu contenido fluye sin embotellamientos.</p>
             </div>
-        </section>
+            <div class="stat-card benefit-card">
+                <span class="stat-icon">🎬</span>
+                <h3>Consistencia visual</h3>
+                <p>Mismo color, mismo estilo, misma identidad en cada video. Tu audiencia te reconoce al instante. Eso construye marca.</p>
+            </div>
+            <div class="stat-card benefit-card">
+                <span class="stat-icon">📈</span>
+                <h3>Más profesionalismo</h3>
+                <p>Edición que retiene. Diseño que convierte. La diferencia entre "se ve casero" y "se ve profesional" es decisiva.</p>
+            </div>
+        </div>
+    </section>
+
+        <section id="audiencias" class="section section-dark">
+            <p class="eyebrow">Quiénes trabajan conmigo</p>
+            <h2>Trabajo con tres tipos de <span style="color: var(--red);">creadores</span></h2>
+
+        <div class="audience-grid">
+            <div class="audience-card">
+                <h3>🎮 Streamers</h3>
+                <p><strong>Necesitas clips editados para TikTok/YouTube Shorts mientras transmites.</strong> Yo armo las ediciones, tú solo sube.</p>
+                <ul class="audience-list">
+                    <li>Clips de stream → shorts listos en 24h</li>
+                    <li>Thumbnails personalizados</li>
+                    <li>Banners y overlays para Twitch</li>
+                    <li>Resúmenes semanales editados</li>
+                </ul>
+            </div>
+            <div class="audience-card">
+                <h3>📱 Creadores de Contenido</h3>
+                <p><strong>Haces Reels, TikToks, YouTube Shorts.</strong> Grabas semanal. Necesitas que alguien edite mientras tú creas el siguiente.</p>
+                <ul class="audience-list">
+                    <li>Edición estilo + transiciones consistentes</li>
+                    <li>Subtítulos y motion graphics</li>
+                    <li>Identidad visual robusta</li>
+                    <li>Templates para repetir rápido</li>
+                </ul>
+            </div>
+            <div class="audience-card">
+                <h3>🚀 Emprendimientos</h3>
+                <p><strong>Necesitas presencia digital profesional.</strong> Videos de producto, testimonios, teasers. Sin invertir 6 figuras en producción.</p>
+                <ul class="audience-list">
+                    <li>Videos de marca + landing pages</li>
+                    <li>Identidad visual (logos, paleta, tipografía)</li>
+                    <li>Contenido para redes consistente</li>
+                    <li>Paquetes diseño+video integrados</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
         <section id="portfolio" class="section section-dark">
             <p class="eyebrow">Trabajos</p>
@@ -758,19 +956,89 @@
             </div>
         </section>
 
+        <section id="diseno" class="section section-dark">
+            <p class="eyebrow">Portafolio</p>
+            <h2>Identidad Visual &amp; <span style="color: var(--red);">Diseño</span></h2>
+            <p class="section-intro">Desde logos hasta brand books. Diseño que posiciona, no sólo que se ve bonito.</p>
+
+        <div class="design-grid">
+            <div class="design-item">
+                <div class="design-placeholder">Logo + Identidad</div>
+                <p>Sistema visual completo para tu marca</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Guía de Marca</div>
+                <p>Brand book con todas las reglas</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Carruseles IG</div>
+                <p>Posts diseñados para tu audiencia</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Web Design</div>
+                <p>Sitios web que convierten</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Empaques</div>
+                <p>Diseño para productos físicos</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Presentaciones</div>
+                <p>Decks profesionales y atractivos</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Merch Design</div>
+                <p>Diseños para merchandising</p>
+            </div>
+            <div class="design-item">
+                <div class="design-placeholder">Posters</div>
+                <p>Gráficos impactantes para marketing</p>
+            </div>
+        </div>
+    </section>
+
+        <section id="proceso" class="section section-light">
+            <p class="eyebrow">Metodología</p>
+            <h2>¿Cómo <span style="color: var(--red);">funciona?</span></h2>
+            <p class="section-intro">4 pasos simples de aquí a que tu proyecto esté listo.</p>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Brief</h3>
+                <p>Hablamos de tu visión, tus referencias, qué quieres lograr. 20 minutos y ya sé cómo hacerlo.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Edición / Diseño</h3>
+                <p>Te presento una primera versión. Si es para video: 48-72h. Si es diseño: depende de complejidad.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Revisiones</h3>
+                <p>Cambios, ajustes, iteraciones. Mientras sea necesario. Tu satisfacción es el objetivo.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Entrega</h3>
+                <p>Archivos en formato listo para publicar. Con guías de uso si es identidad completa.</p>
+            </div>
+        </div>
+    </section>
+
         <section class="section section-light">
             <div class="final-grid">
                 <div>
-                    <p class="eyebrow">Delegar</p>
-                    <h2>Delegar no es gastar dinero. Es comprarte tiempo de vuelta.</h2>
-                    <p class="section-intro">Mientras tú estás editando videos, tu competencia estará grabando 5 más. La edición es el cuello de botella de tu crecimiento. Yo elimino ese cuello de botella.</p>
+                    <p class="eyebrow">CTA Final</p>
+                    <h2>¿Listo para que tu contenido se vea <span style="color: var(--red);">mejor?</span></h2>
+                    <p class="section-intro">Envía un mensaje. Hablamos de tu proyecto sin presión.</p>
                     <div class="hero-actions">
-                        <a href="https://wa.me/593984093526" class="button">💬 Quiero multiplicar mi tiempo</a>
+                        <a href="https://wa.me/593984093526" class="button">💬 Quiero hablar de mi proyecto</a>
                         <a href="https://instagram.com/psycxtic.x7" class="button secondary" target="_blank">Ver behind the scenes</a>
                     </div>
                 </div>
                 <div class="final-card">
-                    <div class="icon">📸</div>
+                    <div class="icon">🎨</div>
                 </div>
             </div>
         </section>
