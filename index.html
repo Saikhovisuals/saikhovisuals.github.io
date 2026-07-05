@@ -6,7 +6,7 @@
     <title>Saikho Visuals — Diseño & Video sin Filtros</title>
     
     <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/img/Recurso%2010.png">
     
     <style>
@@ -31,36 +31,50 @@
         }
 
         body {
-            font-family: 'Clash Display', sans-serif;
+            font-family: 'Space Mono', monospace;
             background: var(--black);
             color: var(--gray);
-            line-height: 1.6;
+            line-height: 1.75;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Clash Display', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+        h1, h2, h3, h4, h5, h6,
+        .button,
+        .button.secondary,
+        .video-label,
+        .nav a,
+        .eyebrow {
+            font-family: 'Space Mono', monospace;
         }
 
         h1 {
-            font-size: clamp(2.6rem, 7vw, 5.2rem);
+            font-size: clamp(2.8rem, 7vw, 5.2rem);
             line-height: 0.95;
+            font-weight: 700;
+            letter-spacing: -0.04em;
         }
 
         h2 {
-            font-size: clamp(2rem, 4.3vw, 3.25rem);
+            font-size: clamp(2.1rem, 4.5vw, 3.4rem);
             line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.04em;
         }
 
         h3 {
-            font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+            font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
         }
 
         p {
-            font-size: 1rem;
-            line-height: 1.75;
+            font-size: clamp(0.97rem, 1.2vw, 1.05rem);
+            line-height: 1.8;
+        }
+
+        strong {
+            color: var(--red);
+            font-weight: 700;
         }
 
         strong {
@@ -213,8 +227,8 @@
             background: var(--red);
             color: white;
             text-decoration: none;
-            font-family: 'Clash Display', sans-serif;
-            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
             border-radius: 999px;
             transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
             border: 1px solid transparent;
@@ -350,7 +364,7 @@
 
         .stat-number {
             display: block;
-            font-family: 'Clash Display', sans-serif;
+            font-family: 'Space Mono', monospace;
             font-size: clamp(2rem, 3vw, 2.8rem);
             color: var(--red);
             font-weight: 700;
